@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void init() {
         Layouts = new int[]{
                 R.layout.fragment_home,
-                R.layout.fragment_notification,
+                R.layout.fragment_goods,
                 R.layout.fragment_settings,
         };
         binding.btnSkip.setOnClickListener(this);

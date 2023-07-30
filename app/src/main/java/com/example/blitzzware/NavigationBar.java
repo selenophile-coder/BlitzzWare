@@ -65,8 +65,13 @@ public class NavigationBar extends AppCompatActivity implements View.OnClickList
                 if(itemId == R.id.home_nav){
                     settingUpFragment(new HomeFragment());
 
-                }else if(itemId == R.id.notification_nav){
-                    settingUpFragment(new NotificationFragment());
+                }else if(itemId == R.id.goods_nav){
+                    settingUpFragment(new GoodsFragment());
+                }
+                else if(itemId == R.id.history_nav){
+                    settingUpFragment(new HistoryFragment());
+                }else if(itemId == R.id.updateStock_nav){
+                    settingUpFragment(new UpdateStockFragment());
                 }else if(itemId == R.id.settings_nav){
                     settingUpFragment(new SettingsFragment());
                 }

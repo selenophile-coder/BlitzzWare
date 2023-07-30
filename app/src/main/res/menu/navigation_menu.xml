@@ -7,9 +7,17 @@
             android:title="@string/home"
             />
         <item
-            android:id="@+id/notification_nav"
-            android:icon="@drawable/baseline_home_24"
-            android:title="@string/notification"/>
+            android:id="@+id/goods_nav"
+            android:icon="@drawable/baseline_production_quantity_limits_24"
+            android:title="@string/goods"/>
+        <item
+        android:id="@+id/updateStock_nav"
+        android:icon="@drawable/baseline_system_update_alt_24"
+        android:title="@string/update_stock"/>
+        <item
+        android:id="@+id/history_nav"
+        android:icon="@drawable/baseline_history_24"
+        android:title="@string/history"/>
         <item
             android:id="@+id/settings_nav"
             android:icon="@drawable/baseline_settings_24"

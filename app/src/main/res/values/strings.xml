@@ -12,7 +12,7 @@
     <string name="slide_3_desc">Leverage the Power of the Ultimate HR Application!</string>
 
     <string name="home">Home</string>
-    <string name="notification">Notification</string>
+    <string name="goods">Goods</string>
     <string name="settings">Settings</string>
 
     <!-- The below two strings represents the open and close operations of the navigation drawer -->
@@ -25,4 +25,6 @@
     <string name="summary">Summary</string>
     <string name="all_goods">All Goods</string>
     <string name="all_contacts">All Contacts</string>
+    <string name="update_stock">Update Stock</string>
+    <string name="history">History</string>
 </resources>
