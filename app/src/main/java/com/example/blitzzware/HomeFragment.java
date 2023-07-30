@@ -15,7 +15,7 @@ import com.example.blitzzware.databinding.FragmentHomeBinding;
 public class HomeFragment extends Fragment {
 
     FragmentHomeBinding homeBinding;
-    MainActivity mainActivity;
+    NavigationBar mainActivity;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -29,13 +29,13 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mainActivity = (MainActivity) getActivity();
+        mainActivity = (NavigationBar) getActivity();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        mainActivity = (MainActivity) getActivity();
+        mainActivity = (NavigationBar) getActivity();
     }
 
     @Override

@@ -1,101 +1,69 @@
 package com.example.blitzzware;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.example.blitzzware.databinding.ActivityMainBinding;
-import com.example.blitzzware.databinding.FragmentHomeBinding;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
-import com.google.android.material.navigation.NavigationView;
+import com.example.blitzzware.databinding.ActivityWelcomeBinding;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener
+{
 
-    ActivityMainBinding mainBinding;
-    ActionBarDrawerToggle mToggle;
-    SharedPreferences sharedPref2;
-//    DrawerLayout drawerLayout;
+    ActivityMainBinding binding;
+    int[] Layouts;
+    SliderAdapter mAdapter;
+    Intent myIntent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-
-        mainBinding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(mainBinding.getRoot());
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         init();
-        getNavigationDrawer();
     }
 
+    private void init() {
+        Layouts = new int[]{
+                R.layout.fragment_home,
+                R.layout.fragment_notification,
+                R.layout.fragment_settings,
+        };
+        binding.btnSkip.setOnClickListener(this);
+        binding.btnNext.setOnClickListener(this);
 
-
-    public void init(){
-
-        sharedPref2 = getSharedPreferences("login_details", Context.MODE_PRIVATE);
-//        mainBinding.txtWelcome.setText("Welcome" + sharedPref2.getString("USER_ID", null));
-
-        mToggle = new ActionBarDrawerToggle(this, mainBinding.drawerLayout, mainBinding.materialToolbar, R.string.nav_open, R.string.nav_close);
-        mainBinding.drawerLayout.addDrawerListener(mToggle);
-        mToggle.syncState();
-
-        setSupportActionBar(mainBinding.materialToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setNavigationDrawer();
-        settingUpFragment(new HomeFragment());
-
-
-    }
-    public void settingUpFragment(Fragment fragment){
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frame,fragment);
-        fragmentTransaction.commit();
-    }
-    private void setNavigationDrawer() {
-        mainBinding.navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-
-                int itemId = item.getItemId();
-                if(itemId == R.id.home_nav){
-                    settingUpFragment(new HomeFragment());
-
-                }else if(itemId == R.id.notification_nav){
-                    settingUpFragment(new NotificationFragment());
-                }else if(itemId == R.id.settings_nav){
-                    settingUpFragment(new SettingsFragment());
-                }
-
-                mainBinding.drawerLayout.closeDrawers();
-                return false;
-            }
-        });
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (mToggle.onOptionsItemSelected(item)){
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void getNavigationDrawer(){
+        mAdapter = new SliderAdapter(Layouts);
+        binding.viewPager.setAdapter(mAdapter);
 
     }
 
     @Override
     public void onClick(View v) {
+        // when clicking the next button
+        if (v.getId() == binding.btnNext.getId()) {
+            int current = getItem(1);
+            if (current < Layouts.length) {
+                binding.viewPager.setCurrentItem(current);
+                if (current == Layouts.length - 1) {
+                    binding.btnNext.setText(R.string.cont);
+                }
+            } else {
+                launchLoginScreen();
+            }
+        } else if (v.getId() == binding.btnSkip.getId()) {
+            launchLoginScreen();
+        }
+    }
 
+    private void launchLoginScreen() {
+        myIntent = new Intent(this, loginActivity.class);
+        startActivity(myIntent);
+
+    }
+
+    private int getItem(int i) {
+        return binding.viewPager.getCurrentItem() + i;
     }
 }
