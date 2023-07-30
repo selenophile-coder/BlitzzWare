@@ -3,6 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/dp160"
     android:orientation="vertical"
-    android:background="@drawable/baseline_home_24">
+    android:background="@color/red">
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="100sp"
+        android:src="@drawable/logo_transperant" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hi_jil"
+        android:textColor="@color/white"
+        android:textSize= "@dimen/_20sp"
+        android:paddingLeft="@dimen/_40dp"
+        />
 
 </LinearLayout>

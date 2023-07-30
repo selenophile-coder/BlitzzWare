@@ -12,9 +12,10 @@
             android:title="@string/notification"/>
         <item
             android:id="@+id/settings_nav"
-            android:icon="@drawable/baseline_home_24"
-            android:title="@string/settings"/> <item
+            android:icon="@drawable/baseline_settings_24"
+            android:title="@string/settings"/>
+        <item
             android:id="@+id/logout_nav"
-            android:icon="@drawable/baseline_home_24"
+            android:icon="@drawable/baseline_logout_24"
             android:title="@string/logout"/>
     </menu>
