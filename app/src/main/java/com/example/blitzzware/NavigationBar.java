@@ -45,7 +45,7 @@ public class NavigationBar extends AppCompatActivity implements View.OnClickList
 
         setSupportActionBar(navigationBinding.materialToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setNavigationDrawer();
+        SetNavigationDrawer();
         settingUpFragment(new HomeFragment());
 
 
@@ -55,7 +55,8 @@ public class NavigationBar extends AppCompatActivity implements View.OnClickList
         fragmentTransaction.replace(R.id.frame,fragment);
         fragmentTransaction.commit();
     }
-    private void setNavigationDrawer() {
+
+    private void SetNavigationDrawer() {
         navigationBinding.navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
